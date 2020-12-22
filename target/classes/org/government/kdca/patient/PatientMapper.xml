@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.government.kdca.patient.PatientMapper">
+	<resultMap id="patientResultMap" type="org.government.kdca.co.Patient">
+        <result column="CODE" property="code" />
+        <result column="LOCATION" property="location" />
+        <result column="NO" property="no" />
+        <result column="NAME" property="name" />
+        <result column="ADDRESS" property="address" />
+        <result column="DETAIL_ADDRESS" property="detailAddress" />
+        <result column="ZIP_CODE" property="zipCode" />
+        <result column="CONFIRMATION_DATE" property="confirmationDate" />
+        <result column="EXPECTED_DATE" property="expectedDate" />
+        <result column="CARD_COMPANY_NAME" property="cardCompanyName" />
+        <result column="CARD_NO" property="cardNo" />
+    </resultMap>
+    
+    <select id="selectAll" parameterType="org.government.kdca.co.Patient" 
+    		resultMap="patientResultMap">
+    	SELECT
+    		CODE,
+    		LOCATION,
+    		NO,
+    		CONFIRMATION_DATE
+    	FROM 
+    		PATIENT
+    	WHERE
+    		LOCATION = #{location}
+    </select>
+    
+    <select id="select" parameterType="org.government.kdca.co.Patient" 
+    		resultMap="patientResultMap">
+    	SELECT
+    		CODE,
+    		LOCATION,
+    		NO,
+    		CONFIRMATION_DATE,
+    		EXPECTED_DATE,
+    		CARD_NO
+    	FROM 
+    		PATIENT
+    	WHERE
+    		CODE = #{code}
+    </select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.government.kdca.auth.AuthInfoMapper">
+	<resultMap id="authInfoResultMap" type="org.government.kdca.co.AuthInfo">
+        <result column="AUTH_KEY" property="authKey" />
+        <result column="AUTH_STATUS" property="authStatus" />
+    </resultMap>
+    
+    <select id="select" parameterType="org.government.kdca.co.AuthInfo" 
+    		resultMap="authInfoResultMap">
+    	SELECT
+    		AUTH_KEY
+    	FROM 
+    		AUTH_INFO
+    	WHERE
+    		AUTH_KEY = #{authKey} AND AUTH_STATUS = 'Y'
+    </select>
+</mapper>
